@@ -1,0 +1,23 @@
+{
+  "name": "vite-plugin-exthtml",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "exthtml"
+  ],
+  "author": "alvarenga.milton@drall.com.br",
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "exthtml": "github:milton-alvarenga/exthtml"
+  }
+}
