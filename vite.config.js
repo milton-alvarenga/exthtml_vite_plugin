@@ -3,28 +3,53 @@ import path from 'path';
 
 
 function extHTMLPlugin() {
+    const cssMap = new Map();
+
     return {
         name: 'vite-plugin-exthtml',
         enforce: 'pre',
         transform(src, id) {
             if (id.endsWith('.exthtml')) {
-                this.currentFileName = path.basename(id, '.exthtml'); // store base name without extension
+                let currentFileName = path.basename(id, '.exthtml'); // store base name without extension
                 //Call compiler
-                const [_, __, style, code] = exthtmlCompile(src, this.currentFileName)
-                this.styleContent = style?.value || ''
+                const [_, __, styles, code] = exthtmlCompile(src, currentFileName)
+
+                let styleContent = (styles && styles[0] && styles[0].value) || '';
+                cssMap.set(`virtual:${currentFileName}.css`, styleContent);
+
                 return {
                     code,
                     map: null,
                 }
             }
         },
+        resolveId(id) {
+            if (id.startsWith('virtual')) {
+                return id // mark this id as virtual module
+            }
+        },
+        load(id) {
+            if (id.startsWith('virtual')) {
+                return cssMap.get(id) || '';
+            }
+        },
         generateBundle(options, bundle) {
+            /*
             if (this.styleContent && this.currentFileName) {
                 // Emit CSS file with stored styleContent
                 this.emitFile({
                     type: 'asset',
                     fileName: `${this.currentFileName}.css`, // fileName based on current file, with .css extension
                     source: this.styleContent,
+                });
+            }
+            */
+            for (const [virtualId, css] of cssMap.entries()) {
+                const filename = virtualId.replace(/^virtual:/, '');
+                this.emitFile({
+                    type: 'asset',
+                    fileName: filename,
+                    source: css,
                 });
             }
         },
