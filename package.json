@@ -15,7 +15,7 @@
   "author": "alvarenga.milton@drall.com.br",
   "license": "GPL-2.0",
   "devDependencies": {
-    "vite": "^7.0.4"
+    "vite": "^7.1.3"
   },
   "dependencies": {
     "exthtml": "github:milton-alvarenga/exthtml"
