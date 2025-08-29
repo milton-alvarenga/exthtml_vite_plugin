@@ -1,4 +1,5 @@
 import { exthtmlCompile } from 'exthtml/src/compiler/compiler_exthtml.js';
+import { ast2strCss } from "exthtml/src/parse/css/parser_css.js"
 import path from 'path';
 
 
@@ -13,8 +14,8 @@ function extHTMLPlugin() {
                 let currentFileName = path.basename(id, '.exthtml'); // store base name without extension
                 //Call compiler
                 const [_, __, styles, code] = exthtmlCompile(src, currentFileName)
-
-                let styleContent = (styles && styles[0] && styles[0].value) || '';
+ 
+                let styleContent = (styles && styles[0] && styles[0].value) && ast2strCss(styles[0].children) || '';
                 cssMap.set(`virtual:${currentFileName}.css`, styleContent);
 
                 return {
