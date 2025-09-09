@@ -1,0 +1,19 @@
+<script>
+let _text = "ok"
+function update_text(e){
+    _text = e.target.value
+}
+</script>
+<input type="text" @input={update_text} value={_text} class={a:/ok[0-9]+$/.test(_text) }/>a = {_text}
+<br />
+Pattern to activate the red class: 
+<br />
+input type="text" with value equal ok[0-9]+$
+<br />
+<b>Is the red class activated:</b> {/ok[0-9]+$/.test(_text)}
+
+<style>
+.a {
+    color:red
+}
+</style>
