@@ -41,7 +41,7 @@ Make sure your `package.json` includes the following script:
 
 ### Writing Tests
 
-Example test file `tests/html-count.test.js`:
+Example test file `tests/index.test.js`:
 
 ```js
 import { test, expect } from '@playwright/test';
