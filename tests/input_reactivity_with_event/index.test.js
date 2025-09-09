@@ -30,6 +30,12 @@ test('extHTML input reactivity and red class', async ({ page }) => {
   await expect(page.locator('body')).toContainText('a = ok4567');
 
 
+  // Type non-matching value
+  await input.fill('ok4567a');
+  await expect(input).not.toHaveClass(/a/);
+  await expect(page.locator('body')).toContainText('a = ok4567a');
+
+
   // Clear input or set non-matching again
   await input.fill('okABC');
   await expect(input).not.toHaveClass(/a/);
