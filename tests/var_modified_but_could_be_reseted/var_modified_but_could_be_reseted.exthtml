@@ -1,0 +1,18 @@
+<script>
+let count = 1;
+let operation = "+"
+function new_value(){
+    (operation == "+") ? count++ : count--
+    if(count > 10){
+        operation = "-"
+        count = 9
+    }else if( count < 1){
+        operation = "+"
+        count = 2
+    }
+}
+</script>
+
+Count: {count}<br/>
+
+<button @click={new_value}>{(operation == '+') ? 'Add +1' : 'Remove -1'} on count</button>
