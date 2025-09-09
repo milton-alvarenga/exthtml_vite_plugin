@@ -1,0 +1,15 @@
+<script>
+let obj = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+</script>
+
+A: {obj.a}<br/>
+B: {obj.b}<br/>
+C: {obj.c}<br/>
+
+<button @click={obj.a++}>Change A</button><br />
+<button @click={obj.b = obj.b*2}>Change B</button><br />
+<button @click={obj.c = obj.c * 3}>Change C</button><br />
