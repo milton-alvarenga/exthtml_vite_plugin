@@ -1,0 +1,15 @@
+<script>
+let name = "World"
+</script>
+
+<div>
+    <p>Hello {name}</p>
+    <script>alert("teste")</script>
+</div>
+
+
+<style>
+p {
+    color:red
+}
+</style>
