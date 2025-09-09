@@ -4,7 +4,7 @@ let name = "World"
 
 <div>
     <p>Hello {name}</p>
-    <script>alert("teste")</script>
+    <script>alert("test")</script>
 </div>
 
 
