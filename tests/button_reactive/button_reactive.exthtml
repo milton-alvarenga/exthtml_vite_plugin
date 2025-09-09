@@ -1,0 +1,24 @@
+<script>
+let ok = "OK"
+function changeOK(){
+    ok = "Changed!"
+}
+
+function changeBack(){
+    ok = "OK"
+}
+
+function newChange(){
+    ok = "-----"
+    setTimeout(changeOK,3000)
+
+    setTimeout(function(){
+        ok = "YES YES!!!!"
+    },6000)
+}
+
+</script>
+<p>{ok}</p>
+<button @click={changeOK}>Worked?</button>
+<button @click={changeBack}>Returned?</button>
+<button @click={newChange}>And now?</button>
