@@ -1,0 +1,43 @@
+<script>
+let ok = "OK"
+let flag = true
+
+function changeOK(){
+    ok = "ChangedOk!"
+}
+
+function changeOKWithParameter(new_value){
+    ok = new_value
+}
+
+let changeOKWithParameterAsVar = function(new_value){
+    ok = new_value
+}
+
+let changeOKWithParameterAsArrowVar = (new_value) => {
+    ok = new_value
+}
+
+</script>
+<p>{ok}</p>
+<button @click={changeOK}>fn</button>
+<button @click={changeOKWithParameter("changed")}>fn(with_parameter)</button>
+<button @click={changeOK()}>fn()</button>
+<button @click={ok = "OK assignment"}>ok = "OK"</button>
+<button @click={() => ok = "OK arrow"}>Arrow function</button>
+<button @click={() => {ok = "OK arrow with bracket."}}>Arrow function with bracket</button>
+<button @click={changeOKWithParameterAsVar}>Function as var without parameter</button>
+<button @click={changeOKWithParameterAsVar('changed')}>Function as var with parameter</button>
+<button @click={changeOKWithParameterAsArrowVar}>Arrow Function as var without parameter</button>
+<button @click={changeOKWithParameterAsArrowVar('changedByNamedArrow')}>Arrow Function as var with parameter</button>
+
+<h1>Test class changing by flag</h1>
+<h1 class={h1:flag}>Dynamic Class</h1>
+<h1 class:h1={flag}>Class directive</h1>
+<button @click={flag = !flag}>Mude</button>
+
+<style>
+.h1{
+    color:red;
+}
+</style>
