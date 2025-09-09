@@ -28,6 +28,13 @@ npm run test:e2e
 
 This will execute all Playwright tests in the configured test folder (e.g., `tests/`) against the running Vite app at `http://localhost:5173/`.
 
+#### Test specific script and not all availables tests
+```bash
+npm run test:e2e:headed -- tests/var_modified_but_could_be_reseted/
+```
+
+This will execute only the tests on the target directory informed
+
 ### Test Script Configuration
 
 Make sure your `package.json` includes the following script:
