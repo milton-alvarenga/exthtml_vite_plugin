@@ -1,0 +1,11 @@
+<script>
+let count = 1;
+let double = count * 2;
+let triple = double + count
+</script>
+
+Count: {count}<br/>
+Double: {double}<br/>
+Triple: {triple}<br/>
+
+<button @click={count++}>Add +1 on count</button>
