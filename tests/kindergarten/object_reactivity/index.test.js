@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('object reactivity test', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/object_reactivity/');
+  await page.goto('http://localhost:5173/tests/kindergarten/object_reactivity/');
 
   const app = page.locator('#app') || page.locator('body'); // container of text
   const btnA = page.locator('button', { hasText: 'Change A' });

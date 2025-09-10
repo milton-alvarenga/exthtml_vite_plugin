@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('extHTML counter buttons test', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/array_reactivity/');
+  await page.goto('http://localhost:5173/tests/kindergarten/array_reactivity/');
 
   const app = page.locator('#app');
   const btnA = app.locator('button', { hasText: 'Change A' });

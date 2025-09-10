@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('counter with double and triple values', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/var_reactivity/');
+  await page.goto('http://localhost:5173/tests/kindergarten/var_reactivity/');
 
   const app = page.locator('#app');
   const button = app.locator('button');

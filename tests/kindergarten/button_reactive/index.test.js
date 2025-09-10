@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('button reactive test flow', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/button_reactive/');
+  await page.goto('http://localhost:5173/tests/kindergarten/button_reactive/');
 
   // Check the <p> contains "OK"
   const p = page.locator('p');

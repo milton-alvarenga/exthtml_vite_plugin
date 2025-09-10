@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('events on buttons and flag class toggle', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/events_on_btn/');
+  await page.goto('http://localhost:5173/tests/kindergarten/events_on_btn/');
 
   const p = page.locator('p');
 

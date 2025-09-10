@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('extHTML input reactivity and red class', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/input_reactivity_with_event/'); // adjust URL
+  await page.goto('http://localhost:5173/tests/kindergarten/input_reactivity_with_event/'); // adjust URL
 
   const input = page.locator('input[type="text"]');
   const output = page.locator('div, body'); // container displaying "a = _text"

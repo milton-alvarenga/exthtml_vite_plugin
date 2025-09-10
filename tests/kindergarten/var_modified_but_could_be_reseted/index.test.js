@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('counter should increment to 10, switch to decrement, and switch back', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/var_modified_but_could_be_reseted/');
+  await page.goto('http://localhost:5173/tests/kindergarten/var_modified_but_could_be_reseted/');
 
   const app = page.locator('#app');
   const button = app.locator('button');
