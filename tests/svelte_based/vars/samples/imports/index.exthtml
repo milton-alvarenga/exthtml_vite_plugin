@@ -1,0 +1,5 @@
+<script>
+	import x from './x.js';
+	import { y } from './y.js';
+	import * as z from './z.js';
+</script>
