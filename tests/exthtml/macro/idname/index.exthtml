@@ -1,0 +1,11 @@
+<script>
+let nm = "idname_here"
+</script>
+<p (idname)={nm}>{nm}</p>
+Is it ok?
+
+<style>
+#idname_here {
+    color: red;
+}
+</style>
