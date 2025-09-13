@@ -1,18 +1,17 @@
 import { test, expect } from '@playwright/test';
 
 test('should show alert "test" and render Hello World paragraph', async ({ page }) => {
-    
-    await page.goto('http://localhost:5173/tests/kindergarten/script_on_html/');
 
-    // Listen for the alert dialog
+    // Start waiting for the dialog *before* navigating
     const dialogPromise = page.waitForEvent('dialog');
-    
-    // Wait for and check the alert
+
+    page.goto('http://localhost:5173/tests/kindergarten/script_on_html/');
+
     const dialog = await dialogPromise;
+
     expect(dialog.type()).toBe('alert');
     expect(dialog.message()).toBe('test');
     await dialog.accept();
-
 
     const paragraph = page.locator('p');
 
@@ -26,5 +25,3 @@ test('should show alert "test" and render Hello World paragraph', async ({ page 
     // Check that the <p> element contains "Hello World"
     await expect(paragraph).toHaveText('Hello World');
 });
-
-
