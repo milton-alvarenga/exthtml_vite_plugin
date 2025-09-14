@@ -1,0 +1,15 @@
+<script>
+let nm = "idname_here"
+function change(){
+    nm == "idname_here" ? nm = "ok" : nm = "idname_here"
+}
+</script>
+<p (idname)={nm}>{nm}</p>
+Is it ok?
+<button @click={change}>Change</button>
+
+<style>
+#idname_here {
+    color: red;
+}
+</style>

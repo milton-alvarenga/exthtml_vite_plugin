@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('macro idname should render correctly', async ({ page }) => {
-  await page.goto('http://localhost:5173/tests/exthtml/macro/idname/index.html');
+  await page.goto('http://localhost:5173/tests/exthtml/macro/idname/static/index.html');
 
   const paragraph = page.locator('#idname_here');
 
