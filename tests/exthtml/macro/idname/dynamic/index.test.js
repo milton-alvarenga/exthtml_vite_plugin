@@ -20,13 +20,14 @@ test('macro idname should render correctly', async ({ page }) => {
   await btnChange.click();
 
   // Check that the paragraph exists with correct text
-  await expect(paragraph).toHaveText('ok');
+  const paragraph2 = page.locator('#ok');
+  await expect(paragraph2).toHaveText('ok');
 
   // Check that the sibling text is also present
   await expect(page.locator('body')).toContainText('Is it ok?');
 
   // Verify that the CSS is applied (color: red)
-  color = await paragraph.evaluate(el => getComputedStyle(el).color);
+  color = await paragraph2.evaluate(el => getComputedStyle(el).color);
   expect(color).toBe('rgb(0, 0, 0)'); // red in RGB
 
   await btnChange.click();
