@@ -1,0 +1,33 @@
+<script>
+let ok = "Check Classes variable changes"
+let x = 1
+setInterval(function(){
+    x++
+},1500)
+</script>
+
+<h1 class:red={x%2 == 0} class:blue={x%2 == 1} class:pink={x%3 == 0} class:purple={x%5 == 0}>{ok}</h1>
+{x}
+<br/>
+What is going on?
+<p>Yes or no?</p>
+
+Tudo blz então?
+
+<input type="text" value={x} />
+This is {(x%2)?"odd":"even"}
+
+<style>
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.pink {
+    color: pink;
+}
+.purple {
+    color: purple;
+}
+</style>
