@@ -1,0 +1,29 @@
+<script>
+let nm = "idname_here"
+let visible = true
+let _text = "ok"
+function update_nm(){
+    nm = (nm == "OK") ? "idname_here" : "OK"
+}
+function toggle_visibility(){
+    visible = !visible
+}
+function update_text(e){
+    _text = e.target.value
+}
+</script>
+<p (idname)={nm} title={nm} hidden={visible}>{nm}</p>
+<p hidden={!visible}>hidden</p>
+Está tudo ok?
+<br/>
+<br/>
+<input type="text" @input={update_text} value={_text} /> = {_text}
+<br/>
+<br/>
+<button @click={update_nm}>Change nm</button>
+<button @click={toggle_visibility}>Toggle visibility</button>
+<style>
+* {
+    color: red;
+}
+</style>
