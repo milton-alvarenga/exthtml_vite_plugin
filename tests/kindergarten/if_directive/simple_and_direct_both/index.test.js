@@ -18,7 +18,7 @@ test('simple_and_direct if directive works correctly', async ({ page }) => {
   await expect(conditionalDiv).toHaveText('Is it working?');
 
   // Verify the DOM order: Before -> div -> After
-  const bodyHTML = await app.locator('body').innerHTML();
+  const bodyHTML = await page.locator('body').innerHTML();
   const beforeIndex = bodyHTML.indexOf('Before');
   const divIndex = bodyHTML.indexOf('Is it working?');
   const afterIndex = bodyHTML.indexOf('After');
