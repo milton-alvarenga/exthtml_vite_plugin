@@ -1,0 +1,6 @@
+<script>let ok = 'yes'</script>
+<h1 name="ok">Before</h1>
+<div *if={ok}>
+	Is it working?
+</div>
+<h1 name="ok">After</h1>
