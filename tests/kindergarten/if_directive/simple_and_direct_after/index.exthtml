@@ -1,0 +1,5 @@
+<script>let ok = 'yes'</script>
+<div *if={ok}>
+Is it working?
+</div>
+<h1 name="ok">After</h1>
