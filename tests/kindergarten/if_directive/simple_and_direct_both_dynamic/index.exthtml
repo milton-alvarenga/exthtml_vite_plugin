@@ -1,0 +1,13 @@
+<script>
+	let ok = true
+	let before = true;
+	let after = true;
+</script>
+<h1 name="ok" *if={before}>Before</h1>
+<div *if={ok}>
+	Is it working?
+</div>
+<h1 name="ok" *if={after}>After</h1>
+<button @click={before = !before}>Change before state</button>
+<button @click={after = !after}>Change after state</button>
+<button @click={ok = !ok}>Change ok state</button>
