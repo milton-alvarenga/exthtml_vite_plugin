@@ -1,0 +1,8 @@
+<script>
+let count = 0
+</script>
+<h1>IF Directive</h1>
+<p>Current count value is {count}</p>
+<button @click={count++}>Add +1 on count</button>
+<p *if={count %2 == 0}>I am odd</p>
+<p *if={count %2 == 1}>I am even</p>
