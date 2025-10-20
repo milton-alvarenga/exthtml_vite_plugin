@@ -1,0 +1,29 @@
+<script>
+    let first_level = true;
+    let second_level = true;
+    let third_level = true;
+    let fourth_level = true;
+</script>
+<div *if={first_level}>
+    First Level
+    <div *if={second_level}>
+        Second Level
+        <div *if={third_level}>
+            Third Level
+            <div *if={fourth_level}>
+                Fourth Level
+            </div>
+        </div>
+    </div>
+</div>
+{first_level}<br />
+{second_level}<br />
+{third_level}<br />
+{fourth_level}<br />
+<button @click={first_level = !first_level}>First Level change state</button>
+<br />
+<button @click={second_level = !second_level}>Second Level change state</button>
+<br />
+<button @click={third_level = !third_level}>Third Level change state</button>
+<br />
+<button @click={fourth_level = !fourth_level}>Fourth Level change state</button>
