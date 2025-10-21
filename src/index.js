@@ -12,6 +12,8 @@ export function extHTMLPlugin() {
         transform(src, id) {
             if (id.endsWith('.exthtml')) {
                 let currentFileName = path.basename(id, '.exthtml'); // store base name without extension
+                //No cache
+                currentFileName += `.${Date.now()}`
                 //Call compiler
                 const [_, __, styles, code] = exthtmlCompile(src, currentFileName)
  
