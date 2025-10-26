@@ -1,0 +1,8 @@
+<script>
+  let count = 0;
+  let tripleCount = count * 3;
+  if (tripleCount > 6) count = 0;
+</script>
+Count: {count}<br />
+Triple Count: {tripleCount}<br />
+<button @click={count++}>Count++</button>
