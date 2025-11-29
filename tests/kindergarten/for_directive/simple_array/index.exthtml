@@ -1,0 +1,10 @@
+<script>
+	let items = ['A','B','C','D','E'];
+</script>
+<table>
+	<tr *for={items as item}>
+		<td>
+		{item}
+		</td>
+	</tr>
+</table>
