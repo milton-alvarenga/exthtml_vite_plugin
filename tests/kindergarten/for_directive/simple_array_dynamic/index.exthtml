@@ -1,0 +1,12 @@
+<script>
+	let items = ['A','B','C','D','E'];
+</script>
+<table>
+	<tr *for={items as item}>
+		<td>
+		{item}
+		</td>
+	</tr>
+</table>
+<button @click={items.push("F")}>Add item</button>
+<button @click={items.pop()}>Remove item</button>
