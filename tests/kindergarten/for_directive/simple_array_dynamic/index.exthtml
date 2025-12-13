@@ -10,3 +10,10 @@
 </table>
 <button @click={items.push("F")}>Add item</button>
 <button @click={items.pop()}>Remove item</button>
+<button @click={items.unshift('X')}>Unshift item</button>
+<button @click={items.splice(2, 0, 'X')}>Insert X at 2</button>
+<button @click={items[2] = 'Z'}>Replace item at 2 with Z</button>
+<button @click={() => {const tmp = items[1]; items[1] = items[3]; items[3] = tmp;}}>Swap 1 and 3</button>
+<button @click={items.reverse()}>Reverse items</button>
+<button @click={items.length = 0}>Clear items</button>
+<button @click={items.push("A", "B", "C")}>Re-add A,B,C</button>

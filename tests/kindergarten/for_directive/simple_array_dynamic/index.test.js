@@ -11,7 +11,7 @@ test("dynamic *for directive reconciliation should be correct", async ({ page })
 
 	// Utility function to get row texts
 	const getRows = async () =>
-		await page.locator("#app table tr td").allTextContents();
+		(await page.locator("#app table tr td").allTextContents()).map(text => text.trim());
 
 	// Utility function to get TR references for stability checks
 	const getRowHandles = async () =>
@@ -122,13 +122,13 @@ test("dynamic *for directive reconciliation should be correct", async ({ page })
 });
 
 test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
-	
+
 	async function getRowHandles(page) {
 		return await page.locator("table tr").elementHandles();
 	}
 
 	async function getRowTexts(page) {
-		return await page.locator("table tr").allTextContents();
+		return (await page.locator("table tr").allTextContents()).map(text => text.trim());
 	}
 
 	test.beforeEach(async ({ page }) => {
@@ -195,9 +195,7 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 	// ─────────────────────────────────────────────────────────────
 	test("insert at start: only first is new", async ({ page }) => {
 
-		await page.evaluate(() => {
-			window.items.unshift("X");
-		});
+		await page.click("text=Unshift item");
 
 		const handlesAfter = await getRowHandles(page);
 		const textsAfter = await getRowTexts(page);
@@ -205,10 +203,9 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 		expect(textsAfter[0]).toBe("X");
 
 		// Check identity preservation for others
-		// (handle[1] corresponds to old handle[0], etc.)
-		const handlesBefore = await getRowHandles(page);
+		const handlesBeforeAfterUnshift = await getRowHandles(page);
 		for (let i = 1; i < handlesAfter.length; i++) {
-			expect(handlesAfter[i]).toBe(handlesBefore[i]);
+			expect(handlesAfter[i]).toBe(handlesBeforeAfterUnshift[i]);
 		}
 	});
 
@@ -219,9 +216,7 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 
 		const handlesBefore = await getRowHandles(page);
 
-		await page.evaluate(() => {
-			window.items.splice(2, 0, "X"); // insert at position 2
-		});
+		await page.click("text=Insert X at 2");
 
 		const handlesAfter = await getRowHandles(page);
 		const textsAfter = await getRowTexts(page);
@@ -243,9 +238,7 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 
 		const handlesBefore = await getRowHandles(page);
 
-		await page.evaluate(() => {
-			window.items[2] = "Z";
-		});
+		await page.click("text=Replace item at 2 with Z");
 
 		const handlesAfter = await getRowHandles(page);
 		const textsAfter = await getRowTexts(page);
@@ -264,11 +257,7 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 		const textsBefore = await getRowTexts(page);
 
 		// Swap index 1 and 3
-		await page.evaluate(() => {
-			const tmp = window.items[1];
-			window.items[1] = window.items[3];
-			window.items[3] = tmp;
-		});
+		await page.click("text=Swap 1 and 3");
 
 		const handlesAfter = await getRowHandles(page);
 		const textsAfter = await getRowTexts(page);
@@ -292,9 +281,7 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 		const handlesBefore = await getRowHandles(page);
 		const textsBefore = await getRowTexts(page);
 
-		await page.evaluate(() => {
-			window.items.reverse();
-		});
+		await page.click("text=Reverse items");
 
 		const handlesAfter = await getRowHandles(page);
 		const textsAfter = await getRowTexts(page);
@@ -311,17 +298,13 @@ test.describe('dynamic *for directive reconciliation – FULL SUITE', () => {
 	// ─────────────────────────────────────────────────────────────
 	test("clear array: empty list then refill correctly", async ({ page }) => {
 
-		await page.evaluate(() => {
-			window.items.length = 0;
-		});
+		await page.click("text=Clear items");
 
 		let handles = await getRowHandles(page);
 		expect(handles.length).toBe(0);
 
 		// Re-add items
-		await page.evaluate(() => {
-			window.items.push("A", "B", "C");
-		});
+		await page.click("text=Re-add A,B,C");
 
 		const textsAfter = await getRowTexts(page);
 		expect(textsAfter).toEqual(["A", "B", "C"]);
